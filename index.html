@@ -148,6 +148,141 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://skye-ye.github.io/2024/04/29/UVa1592-Database/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Skye-ye">
+      <meta itemprop="description" content="This blog is used for recording author's learning progress">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sky's CS Learning Footprint">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/29/UVa1592-Database/" class="post-title-link" itemprop="url">UVa1592 - Database</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-04-29 09:52:40 / Modified: 10:33:58" itemprop="dateCreated datePublished" datetime="2024-04-29T09:52:40+08:00">2024-04-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题设"><a href="#题设" class="headerlink" title="题设"></a>题设</h1><p>Peter studies the theory of relational databases. Table in the relational database consists of values that are arranged in rows and columns.</p>
+<p>There are different normal forms that database may adhere to. Normal forms are designed to minimize the redundancy of data in the database. For example, a database table for a library might have a row for each book and columns for book name, book author, and author’s email.</p>
+<p>If the same author wrote several books, then this representation is clearly redundant. To formally define this kind of redundancy Peter has introduced his own normal form. A table is in Peter’s Normal Form (PNF) if and only if there is no pair of rows and a pair of columns such that the values in the corresponding columns are the same for both rows.</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>How to compete in ACM ICPC</td>
+<td>Peter</td>
+<td><a href="mailto:&#112;&#101;&#x74;&#x65;&#114;&#64;&#110;&#101;&#101;&#114;&#x63;&#46;&#105;&#102;&#109;&#111;&#x2e;&#114;&#117;">&#112;&#101;&#x74;&#x65;&#114;&#64;&#110;&#101;&#101;&#114;&#x63;&#46;&#105;&#102;&#109;&#111;&#x2e;&#114;&#117;</a></td>
+</tr>
+<tr>
+<td>How to win ACM ICPC</td>
+<td>Michael</td>
+<td><a href="mailto:&#x6d;&#x69;&#x63;&#104;&#x61;&#x65;&#108;&#64;&#x6e;&#x65;&#101;&#114;&#x63;&#x2e;&#105;&#x66;&#109;&#x6f;&#x2e;&#114;&#117;">&#x6d;&#x69;&#x63;&#104;&#x61;&#x65;&#108;&#64;&#x6e;&#x65;&#101;&#114;&#x63;&#x2e;&#105;&#x66;&#109;&#x6f;&#x2e;&#114;&#117;</a></td>
+</tr>
+<tr>
+<td>Notes from ACM ICPC champion</td>
+<td>Michael</td>
+<td><a href="mailto:&#109;&#x69;&#99;&#104;&#x61;&#101;&#108;&#x40;&#110;&#x65;&#x65;&#x72;&#99;&#46;&#105;&#x66;&#109;&#111;&#x2e;&#114;&#x75;">&#109;&#x69;&#99;&#104;&#x61;&#101;&#108;&#x40;&#110;&#x65;&#x65;&#x72;&#99;&#46;&#105;&#x66;&#109;&#111;&#x2e;&#114;&#x75;</a></td>
+</tr>
+</tbody></table>
+<p>The above table is clearly not in PNF, since values for 2rd and 3rd columns repeat in 2nd and 3rd rows. However, if we introduce unique author identifier and split this table into two tables — one containing book name and author id, and the other containing book id, author name, and author email, then both resulting tables will be in PNF.</p>
+<table>
+<thead>
+<tr>
+<th align="left">1</th>
+<th align="center">2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">How to compete in ACM ICPC</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">How to win ACM ICPC</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="left">Notes from ACM ICPC champion</td>
+<td align="center">3</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>Peter</td>
+<td><a href="mailto:&#112;&#x65;&#116;&#x65;&#x72;&#x40;&#110;&#101;&#x65;&#x72;&#99;&#46;&#x69;&#102;&#x6d;&#111;&#46;&#114;&#117;">&#112;&#x65;&#116;&#x65;&#x72;&#x40;&#110;&#101;&#x65;&#x72;&#99;&#46;&#x69;&#102;&#x6d;&#111;&#46;&#114;&#117;</a></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>Michael</td>
+<td><a href="mailto:&#109;&#x69;&#99;&#104;&#97;&#x65;&#108;&#x40;&#110;&#101;&#x65;&#x72;&#99;&#x2e;&#x69;&#102;&#x6d;&#x6f;&#46;&#x72;&#x75;">&#109;&#x69;&#99;&#104;&#97;&#x65;&#108;&#x40;&#110;&#101;&#x65;&#x72;&#99;&#x2e;&#x69;&#102;&#x6d;&#x6f;&#46;&#x72;&#x75;</a></td>
+</tr>
+</tbody></table>
+<p>Given a table your task is to figure out whether it is in PNF or not.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>Input contains several datasets. The first line of each dataset contains two integer numbers n and m (1 ≤ n ≤ 10000,1 ≤ m ≤ 10), the number of rows and columns in the table. The following n lines contain table rows. Each row has m column values separated by commas. Column values consist of ASCII characters from space (ASCII code 32) to tilde (ASCII code 126) with the exception of comma (ASCII code 44). Values are not empty and have no leading and trailing spaces. Each row has at most 80 characters (including separating commas).</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each dataset, if the table is in PNF write to the output file a single word “YES” (without quotes). If the table is not in PNF, then write three lines. On the first line write a single word “NO” (without quotes). On the second line write two integer row numbers r1 and r2 (1 ≤ r1,r2 ≤ n,r1 ̸&#x3D; r2), on the third line write two integer column numbers c1 and c2 (1 ≤ c1,c2 ≤ m,c1 ̸&#x3D; c2), so that values in columns c1 and c2 are the same in rows r1 and r2.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">How to compete in ACM ICPC,Peter,peter@neerc.ifmo.ru</span><br><span class="line">How to win ACM ICPC,Michael,michael@neerc.ifmo.ru</span><br><span class="line">Notes from ACM ICPC champion,Michael,michael@neerc.ifmo.ru</span><br><span class="line">2 3</span><br><span class="line">1,Peter,peter@neerc.ifmo.ru</span><br><span class="line">2,Michael,michael@neerc.ifmo.ru</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NO</span><br><span class="line">2 3</span><br><span class="line">2 3</span><br><span class="line">YES</span><br></pre></td></tr></table></figure>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>这道题预处理字符串后直接暴力和穷举即可，注意不能对r1，r2，c1，c2进行四重循环，会TLE，可以对c1，c2，r进行穷举，并将每一行对应的二元组存入一个map中，这里用的是一个hashmap，存key的方法是将一个二元组对应到唯一的long long数上。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">10010</span>, M = <span class="number">20</span>, P = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m, idx;</span><br><span class="line"><span class="type">int</span> r1, r2, c1, c2;</span><br><span class="line"><span class="type">int</span> g[N][M];</span><br><span class="line">unordered_map&lt;string, <span class="type">int</span>&gt; dict;</span><br><span class="line">unordered_map&lt;LL, <span class="type">int</span>&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">      mp.<span class="built_in">clear</span>();</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">        <span class="type">int</span> a = g[k][i], b = g[k][j];</span><br><span class="line">        LL key = (LL)a * P + b;</span><br><span class="line">        <span class="keyword">if</span> (mp.<span class="built_in">count</span>(key)) &#123;</span><br><span class="line">          r1 = mp[key], r2 = k;</span><br><span class="line">          c1 = i, c2 = j;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        mp[key] = k;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m) == <span class="number">2</span>) &#123;</span><br><span class="line">    idx = <span class="number">0</span>;</span><br><span class="line">    dict.<span class="built_in">clear</span>();</span><br><span class="line">    string line;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">      <span class="built_in">getline</span>(cin, line);</span><br><span class="line">      <span class="function">istringstream <span class="title">iss</span><span class="params">(line)</span></span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">        <span class="built_in">getline</span>(iss, s, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (!dict.<span class="built_in">count</span>(s)) dict[s] = ++idx;</span><br><span class="line">        g[i][j] = dict[s];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">solve</span>())</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;NO\n%d %d\n%d %d\n&quot;</span>, r1, r2, c1, c2);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="built_in">puts</span>(<span class="string">&quot;YES&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://skye-ye.github.io/2024/04/28/UVa10129-Play-on-Words/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1383,100 +1518,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://skye-ye.github.io/2024/04/07/LeetCode443-String-Compression/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Skye-ye">
-      <meta itemprop="description" content="This blog is used for recording author's learning progress">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sky's CS Learning Footprint">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/07/LeetCode443-String-Compression/" class="post-title-link" itemprop="url">LeetCode443 - String Compression</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-04-07 23:58:42" itemprop="dateCreated datePublished" datetime="2024-04-07T23:58:42+08:00">2024-04-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-08 00:13:20" itemprop="dateModified" datetime="2024-04-08T00:13:20+08:00">2024-04-08</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="题设"><a href="#题设" class="headerlink" title="题设"></a>题设</h1><p>Given an array of characters <code>chars</code>, compress it using the following algorithm:</p>
-<p>Begin with an empty string <code>s</code>. For each group of <strong>consecutive repeating characters</strong> in <code>chars</code>:</p>
-<ul>
-<li>If the group’s length is <code>1</code>, append the character to <code>s</code>.</li>
-<li>Otherwise, append the character followed by the group’s length.</li>
-</ul>
-<p>The compressed string <code>s</code> <strong>should not be returned separately</strong>, but instead, be stored <strong>in the input character array <code>chars</code></strong>. Note that group lengths that are <code>10</code> or longer will be split into multiple characters in <code>chars</code>.</p>
-<p>After you are done <strong>modifying the input array,</strong> return <em>the new length of the array</em>.</p>
-<p>You must write an algorithm that uses only constant extra space.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: chars = [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;,&quot;b&quot;,&quot;c&quot;,&quot;c&quot;,&quot;c&quot;]</span><br><span class="line">Output: Return 6, and the first 6 characters of the input array should be: [&quot;a&quot;,&quot;2&quot;,&quot;b&quot;,&quot;2&quot;,&quot;c&quot;,&quot;3&quot;]</span><br><span class="line">Explanation: The groups are &quot;aa&quot;, &quot;bb&quot;, and &quot;ccc&quot;. This compresses to &quot;a2b2c3&quot;.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: chars = [&quot;a&quot;]</span><br><span class="line">Output: Return 1, and the first character of the input array should be: [&quot;a&quot;]</span><br><span class="line">Explanation: The only group is &quot;a&quot;, which remains uncompressed since it&#x27;s a single character.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: chars = [&quot;a&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;]</span><br><span class="line">Output: Return 4, and the first 4 characters of the input array should be: [&quot;a&quot;,&quot;b&quot;,&quot;1&quot;,&quot;2&quot;].</span><br><span class="line">Explanation: The groups are &quot;a&quot; and &quot;bbbbbbbbbbbb&quot;. This compresses to &quot;ab12&quot;.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>1 &lt;= chars.length &lt;= 2000</code></li>
-<li><code>chars[i]</code> is a lowercase English letter, uppercase English letter, digit, or symbol.</li>
-</ul>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>数据结构课作业，我直接贴上leetcode官网版本了。一道非常简单的双指针？用两个指针分别记录新数组的下一个位置和旧数组的下一个位置即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="type">int</span> <span class="title">compress</span><span class="params">(vector&lt;<span class="type">char</span>&gt;&amp; chars)</span> </span>&#123;</span><br><span class="line">    <span class="type">char</span> pre = chars[<span class="number">0</span>];</span><br><span class="line">    <span class="type">int</span> k = <span class="number">1</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> s = chars.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; s; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (chars[i] == pre)</span><br><span class="line">        k++;</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        chars[j++] = pre;</span><br><span class="line">        pre = chars[i];</span><br><span class="line">        <span class="comment">/* k的每一位都要作为char填入新数组 */</span></span><br><span class="line">        <span class="keyword">if</span> (k &gt; <span class="number">1</span>) &#123;</span><br><span class="line">          string k_str = <span class="built_in">to_string</span>(k);</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">char</span> ch : k_str) chars[j++] = ch;</span><br><span class="line">        &#125;</span><br><span class="line">        k = <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    chars[j++] = pre;</span><br><span class="line">    <span class="keyword">if</span> (k &gt; <span class="number">1</span>) &#123;</span><br><span class="line">      string k_str = <span class="built_in">to_string</span>(k);</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">char</span> ch : k_str) &#123;</span><br><span class="line">        chars[j++] = ch;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1542,7 +1587,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

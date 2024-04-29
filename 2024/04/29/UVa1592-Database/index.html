@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"skye-ye.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="题设Peter studies the theory of relational databases. Table in the relational database consists of values that are arranged in rows and columns. There are different normal forms that database may adhere">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVa1592 - Database">
+<meta property="og:url" content="https://skye-ye.github.io/2024/04/29/UVa1592-Database/index.html">
+<meta property="og:site_name" content="Sky&#39;s CS Learning Footprint">
+<meta property="og:description" content="题设Peter studies the theory of relational databases. Table in the relational database consists of values that are arranged in rows and columns. There are different normal forms that database may adhere">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-29T01:52:40.000Z">
+<meta property="article:modified_time" content="2024-04-29T02:33:58.688Z">
+<meta property="article:author" content="Skye-ye">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://skye-ye.github.io/2024/04/29/UVa1592-Database/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>UVa1592 - Database | Sky's CS Learning Footprint</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sky's CS Learning Footprint</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Explore CS World</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://skye-ye.github.io/2024/04/29/UVa1592-Database/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Skye-ye">
+      <meta itemprop="description" content="This blog is used for recording author's learning progress">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sky's CS Learning Footprint">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UVa1592 - Database
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-04-29 09:52:40 / Modified: 10:33:58" itemprop="dateCreated datePublished" datetime="2024-04-29T09:52:40+08:00">2024-04-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="题设"><a href="#题设" class="headerlink" title="题设"></a>题设</h1><p>Peter studies the theory of relational databases. Table in the relational database consists of values that are arranged in rows and columns.</p>
+<p>There are different normal forms that database may adhere to. Normal forms are designed to minimize the redundancy of data in the database. For example, a database table for a library might have a row for each book and columns for book name, book author, and author’s email.</p>
+<p>If the same author wrote several books, then this representation is clearly redundant. To formally define this kind of redundancy Peter has introduced his own normal form. A table is in Peter’s Normal Form (PNF) if and only if there is no pair of rows and a pair of columns such that the values in the corresponding columns are the same for both rows.</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>How to compete in ACM ICPC</td>
+<td>Peter</td>
+<td><a href="mailto:&#112;&#101;&#x74;&#x65;&#114;&#64;&#110;&#101;&#101;&#114;&#x63;&#46;&#105;&#102;&#109;&#111;&#x2e;&#114;&#117;">&#112;&#101;&#x74;&#x65;&#114;&#64;&#110;&#101;&#101;&#114;&#x63;&#46;&#105;&#102;&#109;&#111;&#x2e;&#114;&#117;</a></td>
+</tr>
+<tr>
+<td>How to win ACM ICPC</td>
+<td>Michael</td>
+<td><a href="mailto:&#x6d;&#x69;&#x63;&#104;&#x61;&#x65;&#108;&#64;&#x6e;&#x65;&#101;&#114;&#x63;&#x2e;&#105;&#x66;&#109;&#x6f;&#x2e;&#114;&#117;">&#x6d;&#x69;&#x63;&#104;&#x61;&#x65;&#108;&#64;&#x6e;&#x65;&#101;&#114;&#x63;&#x2e;&#105;&#x66;&#109;&#x6f;&#x2e;&#114;&#117;</a></td>
+</tr>
+<tr>
+<td>Notes from ACM ICPC champion</td>
+<td>Michael</td>
+<td><a href="mailto:&#109;&#x69;&#99;&#104;&#x61;&#101;&#108;&#x40;&#110;&#x65;&#x65;&#x72;&#99;&#46;&#105;&#x66;&#109;&#111;&#x2e;&#114;&#x75;">&#109;&#x69;&#99;&#104;&#x61;&#101;&#108;&#x40;&#110;&#x65;&#x65;&#x72;&#99;&#46;&#105;&#x66;&#109;&#111;&#x2e;&#114;&#x75;</a></td>
+</tr>
+</tbody></table>
+<p>The above table is clearly not in PNF, since values for 2rd and 3rd columns repeat in 2nd and 3rd rows. However, if we introduce unique author identifier and split this table into two tables — one containing book name and author id, and the other containing book id, author name, and author email, then both resulting tables will be in PNF.</p>
+<table>
+<thead>
+<tr>
+<th align="left">1</th>
+<th align="center">2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">How to compete in ACM ICPC</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">How to win ACM ICPC</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="left">Notes from ACM ICPC champion</td>
+<td align="center">3</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>Peter</td>
+<td><a href="mailto:&#112;&#x65;&#116;&#x65;&#x72;&#x40;&#110;&#101;&#x65;&#x72;&#99;&#46;&#x69;&#102;&#x6d;&#111;&#46;&#114;&#117;">&#112;&#x65;&#116;&#x65;&#x72;&#x40;&#110;&#101;&#x65;&#x72;&#99;&#46;&#x69;&#102;&#x6d;&#111;&#46;&#114;&#117;</a></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>Michael</td>
+<td><a href="mailto:&#109;&#x69;&#99;&#104;&#97;&#x65;&#108;&#x40;&#110;&#101;&#x65;&#x72;&#99;&#x2e;&#x69;&#102;&#x6d;&#x6f;&#46;&#x72;&#x75;">&#109;&#x69;&#99;&#104;&#97;&#x65;&#108;&#x40;&#110;&#101;&#x65;&#x72;&#99;&#x2e;&#x69;&#102;&#x6d;&#x6f;&#46;&#x72;&#x75;</a></td>
+</tr>
+</tbody></table>
+<p>Given a table your task is to figure out whether it is in PNF or not.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>Input contains several datasets. The first line of each dataset contains two integer numbers n and m (1 ≤ n ≤ 10000,1 ≤ m ≤ 10), the number of rows and columns in the table. The following n lines contain table rows. Each row has m column values separated by commas. Column values consist of ASCII characters from space (ASCII code 32) to tilde (ASCII code 126) with the exception of comma (ASCII code 44). Values are not empty and have no leading and trailing spaces. Each row has at most 80 characters (including separating commas).</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each dataset, if the table is in PNF write to the output file a single word “YES” (without quotes). If the table is not in PNF, then write three lines. On the first line write a single word “NO” (without quotes). On the second line write two integer row numbers r1 and r2 (1 ≤ r1,r2 ≤ n,r1 ̸&#x3D; r2), on the third line write two integer column numbers c1 and c2 (1 ≤ c1,c2 ≤ m,c1 ̸&#x3D; c2), so that values in columns c1 and c2 are the same in rows r1 and r2.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">How to compete in ACM ICPC,Peter,peter@neerc.ifmo.ru</span><br><span class="line">How to win ACM ICPC,Michael,michael@neerc.ifmo.ru</span><br><span class="line">Notes from ACM ICPC champion,Michael,michael@neerc.ifmo.ru</span><br><span class="line">2 3</span><br><span class="line">1,Peter,peter@neerc.ifmo.ru</span><br><span class="line">2,Michael,michael@neerc.ifmo.ru</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NO</span><br><span class="line">2 3</span><br><span class="line">2 3</span><br><span class="line">YES</span><br></pre></td></tr></table></figure>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>这道题预处理字符串后直接暴力和穷举即可，注意不能对r1，r2，c1，c2进行四重循环，会TLE，可以对c1，c2，r进行穷举，并将每一行对应的二元组存入一个map中，这里用的是一个hashmap，存key的方法是将一个二元组对应到唯一的long long数上。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">10010</span>, M = <span class="number">20</span>, P = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m, idx;</span><br><span class="line"><span class="type">int</span> r1, r2, c1, c2;</span><br><span class="line"><span class="type">int</span> g[N][M];</span><br><span class="line">unordered_map&lt;string, <span class="type">int</span>&gt; dict;</span><br><span class="line">unordered_map&lt;LL, <span class="type">int</span>&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">      mp.<span class="built_in">clear</span>();</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">        <span class="type">int</span> a = g[k][i], b = g[k][j];</span><br><span class="line">        LL key = (LL)a * P + b;</span><br><span class="line">        <span class="keyword">if</span> (mp.<span class="built_in">count</span>(key)) &#123;</span><br><span class="line">          r1 = mp[key], r2 = k;</span><br><span class="line">          c1 = i, c2 = j;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        mp[key] = k;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m) == <span class="number">2</span>) &#123;</span><br><span class="line">    idx = <span class="number">0</span>;</span><br><span class="line">    dict.<span class="built_in">clear</span>();</span><br><span class="line">    string line;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">      <span class="built_in">getline</span>(cin, line);</span><br><span class="line">      <span class="function">istringstream <span class="title">iss</span><span class="params">(line)</span></span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">        <span class="built_in">getline</span>(iss, s, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (!dict.<span class="built_in">count</span>(s)) dict[s] = ++idx;</span><br><span class="line">        g[i][j] = dict[s];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">solve</span>())</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;NO\n%d %d\n%d %d\n&quot;</span>, r1, r2, c1, c2);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="built_in">puts</span>(<span class="string">&quot;YES&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/28/UVa10129-Play-on-Words/" rel="prev" title="UVa10129 - Play on Words">
+      <i class="fa fa-chevron-left"></i> UVa10129 - Play on Words
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%AE%BE"><span class="nav-number">1.</span> <span class="nav-text">题设</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.0.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.0.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.0.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.0.4.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Skye-ye</p>
+  <div class="site-description" itemprop="description">This blog is used for recording author's learning progress</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Skye-ye</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
