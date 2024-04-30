@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"skye-ye.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="题设The 1999 World Finals Contest included a problem based on a dice maze. At the time the problem was written, the judges were unable to discover the original source of the dice maze concept. Shortly a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVa816 - Abbott&#39;s Revenge">
+<meta property="og:url" content="https://skye-ye.github.io/2024/04/30/UVa816-Abbott-s-Revenge/index.html">
+<meta property="og:site_name" content="Sky&#39;s CS Learning Footprint">
+<meta property="og:description" content="题设The 1999 World Finals Contest included a problem based on a dice maze. At the time the problem was written, the judges were unable to discover the original source of the dice maze concept. Shortly a">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-30T03:50:45.000Z">
+<meta property="article:modified_time" content="2024-04-30T04:02:31.062Z">
+<meta property="article:author" content="Skye-ye">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://skye-ye.github.io/2024/04/30/UVa816-Abbott-s-Revenge/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>UVa816 - Abbott's Revenge | Sky's CS Learning Footprint</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sky's CS Learning Footprint</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Explore CS World</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://skye-ye.github.io/2024/04/30/UVa816-Abbott-s-Revenge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Skye-ye">
+      <meta itemprop="description" content="This blog is used for recording author's learning progress">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sky's CS Learning Footprint">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UVa816 - Abbott's Revenge
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-04-30 11:50:45 / Modified: 12:02:31" itemprop="dateCreated datePublished" datetime="2024-04-30T11:50:45+08:00">2024-04-30</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="题设"><a href="#题设" class="headerlink" title="题设"></a>题设</h1><p>The 1999 World Finals Contest included a problem based on a dice maze. At the time the problem was written, the judges were unable to discover the original source of the dice maze concept. Shortly after the contest, however, Mr. Robert Abbott, the creator of numerous mazes and an author on the subject, contacted the contest judges and identified himself as the originator of dice mazes. We regret that we did not credit Mr. Abbott for his original concept in last years problem statement. But we are happy to report that Mr. Abbott has offered his expertise to this years contest with his original and unpublished walk-through arrow mazes.</p>
+<p>As are most mazes, a walk-through arrow maze is traversed by moving from intersection to inter- section until the goal intersection is reached. As each intersection is approached from a given direction, a sign near the entry to the intersection indicates in which directions the intersection can be exited. These directions are always left, forward or right, or any combination of these.</p>
+<p>Figure 1 illustrates a walk-through arrow maze. The intersections are identified as (row, column) pairs, with the upper left being (1,1). The Entrance intersection for Figure 1 is (3,1), and the Goal intersection is (3,3). You begin the maze by moving north from (3,1). As you walk from (3,1) to (2,1), the sign at (2,1) indicates that as you approach (2,1) from the south (traveling north) you may continue to go only forward. Continuing forward takes you toward (1,1). The sign at (1,1) as you approach from the south indicates that you may exit (1,1) only by making a right. This turns you to the east now walking from (1,1) toward (1,2). So far there have been no choices to be made. This is also the case as you continue to move from (1,2) to (2,2) to (2,3) to (1,3). Now, however, as you move west from (1,3) toward (1,2), you have the option of continuing straight or turning left. Continuing straight would take you on toward (1,1), while turning left would take you south to (2,2). The actual (unique) solution to this maze is the following sequence of intersections: (3,1) (2,1) (1,1) (1,2) (2,2) (2,3) (1,3) (1,2) (1,1) (2,1) (2,2) (1,2) (1,3) (2,3) (3,3).</p>
+<p>You must write a program to solve valid walk-through arrow mazes. Solving a maze means (if possible) finding a route through the maze that leaves the Entrance in the prescribed direction, and ends in the Goal. This route should not be longer than necessary, of course.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The input file will consist of one or more arrow mazes. The first line of each maze description contains the name of the maze, which is an alphanumeric string of no more than 20 characters. The next line contains, in the following order, the starting row, the starting column, the starting direction, the goal row, and finally the goal column. All are delimited by a single space. The maximum dimensions of a maze for this problem are 9 by 9, so all row and column numbers are single digits from 1 to 9. The starting direction is one of the characters N, S, E or W, indicating north, south, east and west, respectively.</p>
+<p>All remaining input lines for a maze have this format: two integers, one or more groups of characters, and a sentinel asterisk, again all delimited by a single space. The integers represent the row and column, respectively, of a maze intersection. Each character group represents a sign at that intersection. The first character in the group is ‘N’, ‘S’, ‘E’ or ‘W’ to indicate in what direction of travel the sign would be seen. For example, ‘S’ indicates that this is the sign that is seen when travelling south. (This is the sign posted at the north entrance to the intersection.) Following this first direction character are one to three arrow characters. These can be ‘L’, ‘F’ or ‘R’ indicating left, forward, and right, respectively.</p>
+<p>The list of intersections is concluded by a line containing a single zero in the first column. The next line of the input starts the next maze, and so on. The end of input is the word ‘END’ on a single line by itself.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each maze, the output file should contain a line with the name of the maze, followed by one or more lines with either a solution to the maze or the phrase ‘No Solution Possible’. Maze names should start in column 1, and all other lines should start in column 3, i.e., indented two spaces. Solutions should be output as a list of intersections in the format (R,C) in the order they are visited from the start to the goal, should be delimited by a single space, and all but the last line of the solution should contain exactly 10 intersections.</p>
+<p>Note:</p>
+<p>Robert Abbotts walk-through arrow mazes are actually intended for large-scale construction, not paper. Although his mazes are unpublished, some of them have actually been built. One of these is on dis- play at an Atlanta museum. Others have been constructed by the American Maze Company over the past two summers. As their name suggests these mazes are in- tended to be walked through.</p>
+<p>For the adventurous, Figure 2 a graphic of Robert Abbotts Atlanta maze. Solving it is quite difficult, even when you have an overview of the entire maze. Imagine trying to solve this by actually walking through the maze and only seeing one sign at a time! Robert Abbott him- self indicated that the maze is too com- plex and most people give up before fin- ishing. Among the people that did not give up was Donald Knuth: it took him about thirty minutes to solve the maze.</p>
+<p>The first maze in the following sample input is the maze in Figure 1.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SAMPLE</span><br><span class="line">3 1 N 3 3</span><br><span class="line">1 1 WL NR *</span><br><span class="line">1 2 WLF NR ER * </span><br><span class="line">1 3 NL ER *</span><br><span class="line">2 1 SL WR NF * </span><br><span class="line">2 2 SL WF ELF * </span><br><span class="line">2 3 SFR EL *</span><br><span class="line">0</span><br><span class="line">NOSOLUTION </span><br><span class="line">3 1 N 3 2</span><br><span class="line">1 1 WL NR *</span><br><span class="line">1 2 NL ER *</span><br><span class="line">2 1 SL WR NFR *</span><br><span class="line">2 2 SR EL *</span><br><span class="line">0</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SAMPLE</span><br><span class="line">  (3,1) (2,1) (1,1) (1,2) (2,2) (2,3) (1,3) (1,2) (1,1) (2,1)</span><br><span class="line">  (2,2) (1,2) (1,3) (2,3) (3,3)</span><br><span class="line">NOSOLUTION</span><br><span class="line">  No Solution Possible</span><br></pre></td></tr></table></figure>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>题设很长，图片未加进来，请自行前往UVa官网查看。这是一道BFS题，这道题的核心要点是记录状态，这里的状态不再是最基础的BFS中二维的坐标位置，而是三维的坐标+方向。同时，需要对输入进行翻译，转化为整型来存储，这道题展示了一种非常好的转化方式。此外，这道题还运用了路径存储和回溯，可谓是“面面俱到“。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* dirs = <span class="string">&quot;NESW&quot;</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* turns = <span class="string">&quot;FLR&quot;</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">dir_id</span><span class="params">(<span class="type">char</span> c)</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">strchr</span>(dirs, c) - dirs; &#125; <span class="comment">// strchr的运用</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">turn_id</span><span class="params">(<span class="type">char</span> c)</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">strchr</span>(turns, c) - turns; &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> dr[] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;; <span class="comment">// dr和dc与上面的两个函数相对应，十分巧妙</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> dc[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">  <span class="type">int</span> r, c, dir; <span class="comment">// 三维节点表示</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> d[<span class="number">10</span>][<span class="number">10</span>][<span class="number">4</span>]; <span class="comment">// 存储距离，注意有方向</span></span><br><span class="line">Node p[<span class="number">10</span>][<span class="number">10</span>][<span class="number">4</span>]; <span class="comment">// 存储父节点，注意这里也是有方向的</span></span><br><span class="line"><span class="type">bool</span> has_edge[<span class="number">10</span>][<span class="number">10</span>][<span class="number">4</span>][<span class="number">3</span>]; <span class="comment">// 在输入时记录在某点某方向进入是否能转向</span></span><br><span class="line"><span class="type">int</span> r0, c0, dir1, r1, c1, r2, c2;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">memset</span>(d, <span class="number">-1</span>, <span class="keyword">sizeof</span> d);</span><br><span class="line">  <span class="built_in">memset</span>(has_edge, <span class="literal">false</span>, <span class="keyword">sizeof</span> has_edge);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print_ans</span><span class="params">(Node u)</span> </span>&#123;</span><br><span class="line">  vector&lt;Node&gt; nodes; <span class="comment">// 用vector记录，便于回溯打印</span></span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    nodes.<span class="built_in">push_back</span>(u);</span><br><span class="line">    <span class="keyword">if</span> (d[u.r][u.c][u.dir] == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    u = p[u.r][u.c][u.dir];</span><br><span class="line">  &#125;</span><br><span class="line">  nodes.<span class="built_in">push_back</span>(&#123;r0, c0, dir1&#125;);</span><br><span class="line">  <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = nodes.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    <span class="keyword">if</span> (cnt % <span class="number">10</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; (%d,%d)&quot;</span>, nodes[i].r, nodes[i].c);</span><br><span class="line">    <span class="keyword">if</span> (++cnt % <span class="number">10</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (nodes.<span class="built_in">size</span>() % <span class="number">10</span> != <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node <span class="title">walk</span><span class="params">(<span class="type">const</span> Node&amp; u, <span class="type">int</span> turn)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> dir = u.dir;</span><br><span class="line">  <span class="keyword">if</span> (turn == <span class="number">1</span>) &#123;</span><br><span class="line">    dir = (dir + <span class="number">3</span>) % <span class="number">4</span>; <span class="comment">// 非常巧妙的处理</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (turn == <span class="number">2</span>) &#123;</span><br><span class="line">    dir = (dir + <span class="number">1</span>) % <span class="number">4</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;u.r + dr[dir], u.c + dc[dir], dir&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">inside</span><span class="params">(<span class="type">int</span> r, <span class="type">int</span> c)</span> </span>&#123; <span class="keyword">return</span> r &gt;= <span class="number">1</span> &amp;&amp; r &lt;= <span class="number">9</span> &amp;&amp; c &gt;= <span class="number">1</span> &amp;&amp; c &lt;= <span class="number">9</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  queue&lt;Node&gt; q;</span><br><span class="line">  d[r1][c1][dir1] = <span class="number">0</span>;</span><br><span class="line">  q.<span class="built_in">push</span>(&#123;r1, c1, dir1&#125;);</span><br><span class="line">  <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    Node u = q.<span class="built_in">front</span>();</span><br><span class="line">    q.<span class="built_in">pop</span>();</span><br><span class="line">    <span class="keyword">if</span> (u.r == r2 &amp;&amp; u.c == c2) &#123;</span><br><span class="line">      <span class="built_in">print_ans</span>(u);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">      Node v = <span class="built_in">walk</span>(u, i);</span><br><span class="line">      <span class="keyword">if</span> (has_edge[u.r][u.c][u.dir][i] &amp;&amp; <span class="built_in">inside</span>(v.r, v.c) &amp;&amp;</span><br><span class="line">          d[v.r][v.c][v.dir] &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        d[v.r][v.c][v.dir] = d[u.r][u.c][u.dir] + <span class="number">1</span>;</span><br><span class="line">        p[v.r][v.c][v.dir] = u;</span><br><span class="line">        q.<span class="built_in">push</span>(v);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;  No Solution Possible\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  string name;</span><br><span class="line">  <span class="keyword">while</span> (cin &gt;&gt; name &amp;&amp; name != <span class="string">&quot;END&quot;</span>) &#123;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="type">char</span> dir0;</span><br><span class="line">    cin &gt;&gt; r0 &gt;&gt; c0 &gt;&gt; dir0 &gt;&gt; r2 &gt;&gt; c2;</span><br><span class="line">    dir1 = <span class="built_in">dir_id</span>(dir0);</span><br><span class="line">    r1 = r0 + dr[dir1], c1 = c0 + dc[dir1];</span><br><span class="line">    <span class="type">int</span> r, c;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; r &amp;&amp; r) &#123;</span><br><span class="line">      cin &gt;&gt; c;</span><br><span class="line">      string s;</span><br><span class="line">      <span class="keyword">while</span> (cin &gt;&gt; s &amp;&amp; s[<span class="number">0</span>] != <span class="string">&#x27;*&#x27;</span>) &#123;</span><br><span class="line">        <span class="type">int</span> dir = <span class="built_in">dir_id</span>(s[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; s.<span class="built_in">length</span>(); i++) &#123;</span><br><span class="line">          <span class="type">int</span> turn = <span class="built_in">turn_id</span>(s[i]);</span><br><span class="line">          has_edge[r][c][dir][turn] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; name &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="built_in">solve</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/29/UVa1592-Database/" rel="prev" title="UVa1592 - Database">
+      <i class="fa fa-chevron-left"></i> UVa1592 - Database
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%AE%BE"><span class="nav-number">1.</span> <span class="nav-text">题设</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.0.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.0.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.0.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.0.4.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Skye-ye</p>
+  <div class="site-description" itemprop="description">This blog is used for recording author's learning progress</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Skye-ye</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
