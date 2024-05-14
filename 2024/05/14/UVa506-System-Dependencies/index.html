@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"skye-ye.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="题设Components of computer systems often have dependencies—other components that must be installed before they will function properly. These dependencies are frequently shared by multiple components. Fo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVa506 - System Dependencies">
+<meta property="og:url" content="https://skye-ye.github.io/2024/05/14/UVa506-System-Dependencies/index.html">
+<meta property="og:site_name" content="Sky&#39;s CS Learning Footprint">
+<meta property="og:description" content="题设Components of computer systems often have dependencies—other components that must be installed before they will function properly. These dependencies are frequently shared by multiple components. Fo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-13T16:28:41.000Z">
+<meta property="article:modified_time" content="2024-05-13T16:37:29.418Z">
+<meta property="article:author" content="Skye-ye">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://skye-ye.github.io/2024/05/14/UVa506-System-Dependencies/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>UVa506 - System Dependencies | Sky's CS Learning Footprint</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sky's CS Learning Footprint</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Explore CS World</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://skye-ye.github.io/2024/05/14/UVa506-System-Dependencies/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Skye-ye">
+      <meta itemprop="description" content="This blog is used for recording author's learning progress">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sky's CS Learning Footprint">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UVa506 - System Dependencies
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-05-14 00:28:41 / Modified: 00:37:29" itemprop="dateCreated datePublished" datetime="2024-05-14T00:28:41+08:00">2024-05-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="题设"><a href="#题设" class="headerlink" title="题设"></a>题设</h1><p>Components of computer systems often have dependencies—other components that must be installed before they will function properly. These dependencies are frequently shared by multiple components. For example, both the TELNET client program and the FTP client program require that the TCP&#x2F;IP networking software be installed before they can operate. If you install TCP&#x2F;IP and the TELNET client program, and later decide to add the FTP client program, you do not need to reinstall TCP&#x2F;IP.</p>
+<p>For some components it would not be a problem if the components on which they depended were reinstalled; it would just waste some resources. But for others, like TCP&#x2F;IP, some component configu- ration may be destroyed if the component was reinstalled.</p>
+<p>It is useful to be able to remove components that are no longer needed. When this is done, compo- nents that only support the removed component may also be removed, freeing up disk space, memory, and other resources. But a supporting component, not explicitly installed, may be removed only if all components which depend on it are also removed. For example, removing the FTP client program and TCP&#x2F;IP would mean the TELNET client program, which was not removed, would no longer operate. Likewise, removing TCP&#x2F;IP by itself would cause the failure of both the TELNET and the FTP client programs. Also if we installed TCP&#x2F;IP to support our own development, then installed the TELNET client (which depends on TCP&#x2F;IP) and then still later removed the TELNET client, we would not want TCP&#x2F;IP to be removed.</p>
+<p>We want a program to automate the process of adding and removing components. To do this we will maintain a record of installed components and component dependencies. A component can be installed explicitly in response to a command (unless it is already installed), or implicitly if it is needed for some other component being installed. Likewise, a component, not explicitly installed, can be explicitly removed in response to a command (if it is not needed to support other components) or implicitly removed if it is no longer needed to support another component. Installing an already implicitly-installed component won’t make that component become explicity installed.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The input file contains several test cases, each of them as described below. The input will contain a sequence of commands (as described below), each on a separate line containing no more than eighty characters. Item names are case sensitive, and each is no longer than ten characters. The command names (DEPEND, INSTALL, REMOVE and LIST) always appear in uppercase starting in column one, and item names are separated from the command name and each other by one or more spaces. All appropriate DEPEND commands will appear before the occurrence of any INSTALL command that uses them. There will be no circular dependencies. The end of the input is marked by a line containing only the word END.</p>
+<table>
+<thead>
+<tr>
+<th>Command Syntax</th>
+<th>Interpretation&#x2F;Response</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DEPEND item1 item2 [item3 …]</td>
+<td>item1 depends on item2 (and item3 …)</td>
+</tr>
+<tr>
+<td>INSTALL item1</td>
+<td>install item1 and those on which it depends</td>
+</tr>
+<tr>
+<td>REMOVE item1</td>
+<td>remove item1, and those on which it depends, if possible</td>
+</tr>
+<tr>
+<td>LIST</td>
+<td>list the names of all currently-installed components</td>
+</tr>
+</tbody></table>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each test case, the output must follow the description below. Echo each line of input. Follow each echoed INSTALL or REMOVE line with the actions taken in response, making certain that the actions are given in the proper order. Also identify exceptional conditions (see Sample Output, below, for examples of all cases). For the LIST command, display the names of the currently installed components in the installation order. No output, except the echo, is produced for a DEPEND command or the line containing END. There will be at most one dependency list per item.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">DEPEND   TELNET TCPIP NETCARD</span><br><span class="line">DEPEND TCPIP NETCARD</span><br><span class="line">DEPEND DNS TCPIP NETCARD</span><br><span class="line">DEPEND  BROWSER   TCPIP  HTML</span><br><span class="line">INSTALL NETCARD</span><br><span class="line">INSTALL TELNET</span><br><span class="line">INSTALL foo</span><br><span class="line">REMOVE NETCARD</span><br><span class="line">INSTALL BROWSER</span><br><span class="line">INSTALL DNS</span><br><span class="line">LIST</span><br><span class="line">REMOVE TELNET</span><br><span class="line">REMOVE NETCARD</span><br><span class="line">REMOVE DNS</span><br><span class="line">REMOVE NETCARD</span><br><span class="line">INSTALL NETCARD</span><br><span class="line">REMOVE TCPIP</span><br><span class="line">REMOVE BROWSER</span><br><span class="line">REMOVE TCPIP</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">DEPEND   TELNET TCPIP NETCARD</span><br><span class="line">DEPEND TCPIP NETCARD</span><br><span class="line">DEPEND DNS TCPIP NETCARD</span><br><span class="line">DEPEND  BROWSER   TCPIP  HTML</span><br><span class="line">INSTALL NETCARD</span><br><span class="line">   Installing NETCARD</span><br><span class="line">INSTALL TELNET</span><br><span class="line">   Installing TCPIP</span><br><span class="line">   Installing TELNET</span><br><span class="line">INSTALL foo</span><br><span class="line">   Installing foo</span><br><span class="line">REMOVE NETCARD</span><br><span class="line">   NETCARD is still needed.</span><br><span class="line">INSTALL BROWSER</span><br><span class="line">   Installing HTML</span><br><span class="line">   Installing BROWSER</span><br><span class="line">INSTALL DNS</span><br><span class="line">   Installing DNS</span><br><span class="line">LIST</span><br><span class="line">   NETCARD</span><br><span class="line">   TCPIP</span><br><span class="line">   TELNET</span><br><span class="line">   foo</span><br><span class="line">   HTML</span><br><span class="line">   BROWSER</span><br><span class="line">   DNS</span><br><span class="line">REMOVE TELNET</span><br><span class="line">   Removing TELNET</span><br><span class="line">REMOVE NETCARD</span><br><span class="line">   NETCARD is still needed.</span><br><span class="line">REMOVE DNS</span><br><span class="line">   Removing DNS</span><br><span class="line">REMOVE NETCARD</span><br><span class="line">   NETCARD is still needed.</span><br><span class="line">INSTALL NETCARD</span><br><span class="line">   NETCARD is already installed.</span><br><span class="line">REMOVE TCPIP</span><br><span class="line">   TCPIP is still needed.</span><br><span class="line">REMOVE BROWSER</span><br><span class="line">   Removing BROWSER</span><br><span class="line">   Removing HTML</span><br><span class="line">   Removing TCPIP</span><br><span class="line">REMOVE TCPIP</span><br><span class="line">   TCPIP is not installed.</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>这道题按照题意模拟即可，需要维护的有以下内容：一个组件和一个编号的双向对应关系、父组件对应的子组件（依赖于）、子组件对应的父组件（被依赖）、安装的组件列表、组件是否安装。这些均在全局变量中体现。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> idx;</span><br><span class="line"></span><br><span class="line">string dict1[N];</span><br><span class="line">unordered_map&lt;string, <span class="type">int</span>&gt; dict2;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; s[N];</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; p[N];</span><br><span class="line"><span class="type">int</span> st[N];</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; list;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_idx</span><span class="params">(<span class="type">const</span> string&amp; w)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!dict2.<span class="built_in">count</span>(w)) &#123;</span><br><span class="line">    dict1[++idx] = w;</span><br><span class="line">    dict2[w] = idx;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dict2[w];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">depend</span><span class="params">(istringstream&amp; iss)</span> </span>&#123;</span><br><span class="line">  string word;</span><br><span class="line">  iss &gt;&gt; word;</span><br><span class="line">  <span class="type">int</span> num = <span class="built_in">get_idx</span>(word);</span><br><span class="line">  <span class="type">int</span> num2;</span><br><span class="line">  <span class="keyword">while</span> (iss &gt;&gt; word) &#123;</span><br><span class="line">    num2 = <span class="built_in">get_idx</span>(word);</span><br><span class="line">    s[num].<span class="built_in">push_back</span>(num2);</span><br><span class="line">    p[num2].<span class="built_in">push_back</span>(num);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">install_helper</span><span class="params">(<span class="type">int</span> num, <span class="type">int</span> type)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; it : s[num])</span><br><span class="line">    <span class="keyword">if</span> (!st[it]) <span class="built_in">install_helper</span>(it, <span class="number">1</span>);</span><br><span class="line">  list.<span class="built_in">push_back</span>(num);</span><br><span class="line">  st[num] = type;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;   Installing &quot;</span> &lt;&lt; dict1[num] &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">install</span><span class="params">(<span class="type">const</span> string&amp; w)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> num = <span class="built_in">get_idx</span>(w);</span><br><span class="line">  <span class="keyword">if</span> (st[num])</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;   &quot;</span> &lt;&lt; w &lt;&lt; <span class="string">&quot; is already installed.\n&quot;</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">install_helper</span>(num, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">remove_helper</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; it : p[num])</span><br><span class="line">    <span class="keyword">if</span> (st[it]) <span class="keyword">return</span>;</span><br><span class="line">  st[num] = <span class="number">0</span>;</span><br><span class="line">  list.<span class="built_in">erase</span>(<span class="built_in">find</span>(list.<span class="built_in">begin</span>(), list.<span class="built_in">end</span>(), num));</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;   Removing &quot;</span> &lt;&lt; dict1[num] &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; it : s[num])</span><br><span class="line">    <span class="keyword">if</span> (st[it] == <span class="number">1</span>) <span class="built_in">remove_helper</span>(it);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">remove</span><span class="params">(<span class="type">const</span> string&amp; w)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> num = <span class="built_in">get_idx</span>(w);</span><br><span class="line">  <span class="keyword">if</span> (!st[num]) &#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;   &quot;</span> &lt;&lt; w &lt;&lt; <span class="string">&quot; is not installed.&quot;</span> &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; it : p[num])</span><br><span class="line">    <span class="keyword">if</span> (st[it]) &#123;</span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;   &quot;</span> &lt;&lt; w &lt;&lt; <span class="string">&quot; is still needed.&quot;</span> &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  st[num] = <span class="number">0</span>;</span><br><span class="line">  list.<span class="built_in">erase</span>(<span class="built_in">find</span>(list.<span class="built_in">begin</span>(), list.<span class="built_in">end</span>(), num));</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;   Removing &quot;</span> &lt;&lt; dict1[num] &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; it : s[num])</span><br><span class="line">    <span class="keyword">if</span> (st[it] == <span class="number">1</span>) <span class="built_in">remove_helper</span>(it);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print_list</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; it : list) cout &lt;&lt; <span class="string">&quot;   &quot;</span> &lt;&lt; dict1[it] &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  string line, cmd, target;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">getline</span>(cin, line);</span><br><span class="line">    cout &lt;&lt; line &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="function">istringstream <span class="title">iss</span><span class="params">(line)</span></span>;</span><br><span class="line">    iss &gt;&gt; cmd;</span><br><span class="line">    <span class="keyword">switch</span> (cmd[<span class="number">0</span>]) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;E&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;D&#x27;</span>:</span><br><span class="line">        <span class="built_in">depend</span>(iss);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;I&#x27;</span>:</span><br><span class="line">        iss &gt;&gt; target;</span><br><span class="line">        <span class="built_in">install</span>(target);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;R&#x27;</span>:</span><br><span class="line">        iss &gt;&gt; target;</span><br><span class="line">        <span class="built_in">remove</span>(target);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">        <span class="built_in">print_list</span>();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/05/14/UVa1572-Self-Assembly/" rel="prev" title="UVa1572 - Self-Assembly">
+      <i class="fa fa-chevron-left"></i> UVa1572 - Self-Assembly
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/05/14/UVa804-Petri-Net-Simulation/" rel="next" title="UVa804 - Petri Net Simulation">
+      UVa804 - Petri Net Simulation <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%AE%BE"><span class="nav-number">1.</span> <span class="nav-text">题设</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.0.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.0.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.0.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.0.4.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Skye-ye</p>
+  <div class="site-description" itemprop="description">This blog is used for recording author's learning progress</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Skye-ye</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
